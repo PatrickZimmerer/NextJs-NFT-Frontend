@@ -3,16 +3,9 @@ import React from 'react';
 
 import sample from '../../assets/6.jpg';
 import preview from '../../assets/preview.jpg';
-
-import { useAddress } from '@thirdweb-dev/react';
-import { ConnectWallet } from '@thirdweb-dev/react';
+import Header from '../../components/Header';
 
 function NftDropPage() {
-	// Auth
-	const address = useAddress();
-
-	console.log(address);
-
 	return (
 		<div className="flex flex-col h-screen lg:grid lg:grid-cols-10">
 			{/* Left side */}
@@ -26,19 +19,7 @@ function NftDropPage() {
 
 			{/* Right side */}
 			<div className="lg:col-span-6 p-4 lg:p-12">
-				{/* Header */}
-				<header className="flex flex-col items-center justify-between space-y-2">
-					<h1 className="cursor-pointer text-xl font-light text-center">
-						The <span className="font-extrabold underline decoration-purple-700">PaZi</span> NFT
-						Marketplace
-					</h1>
-					<ConnectWallet
-						accentColor="#7e22ce"
-						colorMode="dark"
-						btnTitle="Connect Wallet"
-						className="mb-4"
-					/>
-				</header>
+				<Header />
 				<hr className="my-2 border-2 border-gray-200" />
 				<main className="flex items-center mt-6 lg:mt-8 flex-col space-y-4 lg:space-y-8">
 					<Image
