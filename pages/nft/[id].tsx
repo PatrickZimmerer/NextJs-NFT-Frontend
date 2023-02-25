@@ -4,12 +4,20 @@ import React from 'react';
 import sample from '../../assets/6.jpg';
 import preview from '../../assets/preview.jpg';
 
+import { useAddress } from '@thirdweb-dev/react';
+import { ConnectWallet } from '@thirdweb-dev/react';
+
 function NftDropPage() {
+	// Auth
+	const address = useAddress();
+
+	console.log(address);
+
 	return (
 		<div className="flex flex-col h-screen lg:grid lg:grid-cols-10">
 			{/* Left side */}
-			<div className="bg-gradient-to-bl from-purple-700 to-cyan-500 flex justify-center items-center flex-col p-8 lg:min-h-screen lg:col-span-4">
-				<div className="bg-gradient-to-br from-yellow-400 to-purple-600 flex p-1 rounded-xl">
+			<div className="bg-gradient-to-bl from-purple-900 to-pink-300 flex justify-center items-center flex-col p-4 lg:p-8 lg:min-h-screen lg:col-span-4">
+				<div className="bg-gradient-to-tr to-yellow-400 from-purple-600 flex p-1 rounded-xl">
 					<Image src={sample} alt="sample" className="w-44 rounded-xl object-cover lg:w-96" />
 				</div>
 				<h1 className="text-white text-center text-4xl my-4">PaZi Landscapes</h1>
@@ -17,20 +25,28 @@ function NftDropPage() {
 			</div>
 
 			{/* Right side */}
-			<div className="lg:col-span-6 p-8 lg:p-12">
+			<div className="lg:col-span-6 p-4 lg:p-12">
 				{/* Header */}
-				<header className="flex items-center justify-between">
+				<header className="flex flex-col items-center justify-between space-y-2">
 					<h1 className="cursor-pointer text-xl font-light text-center">
 						The <span className="font-extrabold underline decoration-purple-700">PaZi</span> NFT
 						Marketplace
 					</h1>
-					<button className="rounded-full text-xs font-bold bg-purple-600 text-white px-4 py-2 lg:px-6 lg:py-3 lg:text-base">
-						Sign In
-					</button>
+					<ConnectWallet
+						accentColor="#7e22ce"
+						colorMode="dark"
+						btnTitle="Connect Wallet"
+						className="mb-4"
+					/>
 				</header>
 				<hr className="my-2 border-2 border-gray-200" />
-				<main className="flex items-center mt-8 flex-col space-y-4 lg:space-y-8">
-					<Image src={preview} alt="preview" className="w-72 rounded-xl object-cover lg:w-80" />
+				<main className="flex items-center mt-6 lg:mt-8 flex-col space-y-4 lg:space-y-8">
+					<Image
+						src={preview}
+						alt="preview"
+						priority
+						className="w-72 rounded-xl object-cover lg:w-80"
+					/>
 					<h2 className="text-xl font-bold text-center lg:font-extrabold lg:text-3xl">
 						The PaZi Landscape Collection | NFT Drop
 					</h2>
